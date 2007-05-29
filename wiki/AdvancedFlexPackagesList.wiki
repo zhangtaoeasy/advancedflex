@@ -1,4 +1,4 @@
-#labels en,Featured
+#labels en,Featured,advancedflex
 =Advanced Flex Packages List=
   * advancedflex
     * advancedflex.aop _(pre-alpha)_
@@ -32,7 +32,6 @@
       * advancedflex.media.fx
     * advancedflex.utils
     * advancedflex.xml
-
 
 
 
