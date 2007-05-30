@@ -1,4 +1,4 @@
-#labels Phase-Implementation,en,dbug
+#labels Phase-Implementation,en,Project-Dbug
 = Introduction =
 The debugger framework written in AS3.0 & MXML for Flex & Flash.
 = Details =
@@ -13,4 +13,5 @@ The debugger framework written in AS3.0 & MXML for Flex & Flash.
 The difference between the .display package and the .mxml.display package is the .mxml.display is written in MXML, but the other is written in AS3.0.
   * advancedflex.debugger.logging;
 //The logging framework.
-
+  * advancedflex.debugger.ui;
+//The GUI debugger IDE written in Flex or Apollo.
