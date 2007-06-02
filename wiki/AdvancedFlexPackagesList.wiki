@@ -18,7 +18,7 @@
         * advancedflex.debugger.display.mxml *(alpha)*
       * advancedflex.debugger.errors *(alpha)*
       * advancedflex.debugger.logging _(pre-alpha)_
-      * advancedflex.debugger.ui _(pre-alpha)_
+      * advancedflex.debugger.bridge _(pre-alpha)_
     * advancedflex.di
     * advancedflex.display
       * advancedflex.display.mxml
@@ -27,12 +27,10 @@
       * advancedflex.math.number
       * advancedflex.math.func
       * advancedflex.math.geom
-      * advancedflex.math.geom3d
     * advancedflex.media
       * advancedflex.media.fx
     * advancedflex.utils
     * advancedflex.xml
-
 
 
 
