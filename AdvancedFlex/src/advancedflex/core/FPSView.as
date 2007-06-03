@@ -13,36 +13,54 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 /////////////////////////////////////////////////////////////////////////////
-package advancedflex.debugger.display {
+package advancedflex.core {
 	
-	import flash.text.TextField;
 	import flash.events.Event;
-	import advancedflex.core.FPSView;
-
+	import flash.utils.getTimer;
+	
 	/**
-	 * <p>The text field that shows FPS.</p>
+	 * <p>View the FPS.</p>
 	 * 
-	 * <p>一个显示FPS的文本框。</p>
+	 * <p>查看FPS</p>
 	 * 
 	 * @author Stephen
 	 */
-	public class FPSViewer extends TextField {
+	public class FPSView {
+		//instance
+		private static const _INSTANCE:FPSView = new FPSView();
 		
 		/**
-		 * @param addEvent if add common FPSView event(This event can add only once to work well.)
-		 * 是否添加FPSView的公用的事件。这个事件只需要添加一次。
+		 * <p>get instance</p>
+		 * 
+		 * <p>得到实例。</p>
+		 * 
+		 * @return instance 实例
 		 */
-		public function FPSViewer(addEvent:Boolean = false) {
-			super();
-			addEventListener(Event.ENTER_FRAME, enterframeHandler, false, 0, true);
-			if(addEvent) {
-				addEventListener(Event.ENTER_FRAME, FPSView.instance.enterFrameHandler, false, 0, true);
-			}
+		public static function get instance():FPSView {
+			return _INSTANCE;
 		}
 		
-		//enter frame Handler
-		private function enterframeHandler(event:Event):void {
-			text = "" + FPSView.instance.fps;
+		//first time
+		private var ft:int;
+		
+		//second time
+		private var st:int;
+		
+		[Bindable]
+		/**
+		 * FPS
+		 */
+		public var fps:int;
+		
+		/**
+		 * <p>Enter Frame Event Handler.You must add this handler once to DisplayObject to view FPS.</p>
+		 * 
+		 * <p>Enter Frame Event Handler.你必须把它添加到DisplayObject才能查看FPS。</p>
+		 */
+		public function enterFrameHandler(event:Event):void {
+			st = getTimer();
+			fps = Math.round(1000 / (st - ft));
+			ft = st;
 		}
 	}
 }
