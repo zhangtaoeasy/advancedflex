@@ -13,36 +13,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 /////////////////////////////////////////////////////////////////////////////
-package advancedflex.debugger.display {
+package advancedflex.debugger.aut.framework.errors {
 	
-	import flash.text.TextField;
-	import flash.events.Event;
-	import advancedflex.core.FPSView;
-
 	/**
-	 * <p>The text field that shows FPS.</p>
-	 * 
-	 * <p>一个显示FPS的文本框。</p>
-	 * 
+	 * AssertionError
 	 * @author Stephen
 	 */
-	public class FPSViewer extends TextField {
+	public class AssertionError extends Error {
 		
 		/**
-		 * @param addEvent if add common FPSView event(This event can add only once to work well.)
-		 * 是否添加FPSView的公用的事件。这个事件只需要添加一次。
+		 * creat AssertionError
+		 * @param message the identifying message
 		 */
-		public function FPSViewer(addEvent:Boolean = false) {
-			super();
-			addEventListener(Event.ENTER_FRAME, enterframeHandler, false, 0, true);
-			if(addEvent) {
-				addEventListener(Event.ENTER_FRAME, FPSView.instance.enterFrameHandler, false, 0, true);
-			}
-		}
-		
-		//enter frame Handler
-		private function enterframeHandler(event:Event):void {
-			text = "" + FPSView.instance.fps;
+		public function AssertionError(message:String = "") {
+			super(message, 0);
 		}
 	}
 }

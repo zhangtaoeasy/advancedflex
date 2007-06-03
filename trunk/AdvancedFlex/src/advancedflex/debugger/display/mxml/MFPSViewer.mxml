@@ -17,7 +17,8 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" initialize="init()">
 	<mx:Script>
 		<![CDATA[
-			import advancedflex.debugger.FPSView;
+			import advancedflex.core.FPSView;
+			
 			public var addEvent:Boolean = false;
 			private function init():void {
 				if(addEvent) {
