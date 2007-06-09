@@ -10,10 +10,14 @@
     * advancedflex.core
       * advancedflex.core.errors
     * advancedflex.errors
-    * advancedflex.debugger *(alpha)*
-      * advancedflex.debugger.aut _(pre-alpha)_
-        * advancedflex.debugger.aut.errors _(pre-alpha)_
-        * advancedflex.debugger.aut.resource _(pre-alpha)_
+    * advancedflex.debugger *(beta)*
+      * advancedflex.debugger.aut.framework *(alpha)*
+        * advancedflex.debugger.aut.framework.errors *(alpha)*
+        * advancedflex.debugger.aut.framework.ns *(alpha)*
+      * advancedflex.debugger.aut.io *(alpha)*
+      * advancedflex.debugger.aut.traceui *(alpha)*
+      * advancedflex.debugger.aut.apolloui *(alpha)*
+      * advancedflex.debugger.aut.flexui *(alpha)*
       * advancedflex.debugger.display *(alpha)*
         * advancedflex.debugger.display.mxml *(alpha)*
       * advancedflex.debugger.errors *(alpha)*
@@ -31,6 +35,5 @@
       * advancedflex.media.fx
     * advancedflex.utils
     * advancedflex.xml
-
 
 
