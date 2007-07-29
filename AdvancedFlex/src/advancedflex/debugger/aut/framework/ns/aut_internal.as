@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
 //Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,7 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-///////////////////////////////////////////////////////////////////////////// -->
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" initialize="init()">
-	<mx:Script>
-		<![CDATA[
-			private function init():void {
-				addEventListener(Event.ENTER_FRAME, enterframeHandler, false, 0, true);
-			}
-			private function enterframeHandler(event:Event):void {
-				txt.text = "" + System.totalMemory / 1024 + " KB";
-			}
-		]]>
-	</mx:Script>
-	<mx:Text id="txt" x="0" y="0" width="100%" height="100%"/>
-</mx:Canvas>
+/////////////////////////////////////////////////////////////////////////////
+package advancedflex.debugger.aut.framework.ns {
+	public namespace aut_internal = "http://code.google.com/p/advancedflex/debugger/aut/framework/ns/aut_internal";
+}
