@@ -1,0 +1,14 @@
+<aut-list>
+	<TestSuite name="TestSuite 1">
+		<TestSuite name="TestSuite 1.1">
+			<TestCase name="com.sample.test::SampleTests1">
+				<method name="method1" type="test" />
+				<method name="method2" type="time" timeout="10" />
+			</TestCase>
+		</TestSuite>
+		<TestCase name="com.sample.test::SampleTests2">
+			<method name="methodA" type="test" />
+			<method name="methodB" type="time" />
+		</TestCase>
+	</TestSuite>
+</aut-list>

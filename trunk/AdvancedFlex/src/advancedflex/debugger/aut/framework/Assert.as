@@ -15,10 +15,12 @@
 /////////////////////////////////////////////////////////////////////////////
 package advancedflex.debugger.aut.framework {
 	
+	import advancedflex.debugger.aut.framework.errors.AssertionError;
+	
 	import flash.utils.ByteArray;
 	import flash.utils.getQualifiedClassName;
+	
 	import mx.utils.ObjectUtil;
-	import advancedflex.debugger.aut.framework.errors.AssertionError;
 
 	/**
 	 * <p>A set of assertion methods useful for writing tests. 
@@ -30,15 +32,24 @@ package advancedflex.debugger.aut.framework {
 	 * assertEquals(...);</p>
 	 * 
 	 * <p>一个用于测试的方法集合。</p>
+	 * 
+	 * @langversion ActionScript 3.0
+	 * 
+	 * @playerversion Flash 9
+	 * 
 	 * @see advancedflex.debugger.aut.errors.AssertionError
 	 * @author Stephen
 	 */
 	public final class Assert {
 		
 		/**
-		 * <p>Asserts that two objects are equal.</p>
+		 * <p>Asserts that two objects are equal.It uses <code>ObjectUtil.compare</code> to conpare</p>
 		 * 
-		 * <p>测试两个对象是否相等。如果不同，将抛出 AssertionError。</p>
+		 * <p>测试两个对象是否相等。它用<code>ObjectUtil.compare</code>来比较。</p>
+		 * 
+		 * @see mx.utils.ObjectUtil#compare
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param expected Expected value.Not be null. 期待的对象（不能为 null ）。
 		 * @param actual The value to check against expected. 事实上得到的对象。
@@ -55,9 +66,13 @@ package advancedflex.debugger.aut.framework {
 		}
 		
 		/**
-		 * <p>Asserts that two objects are not equal.</p>
+		 * <p>Asserts that two objects are not equal.It uses <code>ObjectUtil.compare</code> to conpare</p>
 		 * 
-		 * <p>测试两个对象是否不同。如果相等，将抛出 AssertionError。</p>
+		 * <p>测试两个对象是否不同。它用<code>ObjectUtil.compare</code>来比较。</p>
+		 * 
+		 * @see mx.utils.ObjectUtil#compare
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param expected Expected value.Not be null. 期待的对象（不能为 null ）。
 		 * @param actual The value to check against expected. 事实上得到的对象。
@@ -76,7 +91,9 @@ package advancedflex.debugger.aut.framework {
 		/**
 		 * <p>Asserts that a condition is true.</p>
 		 * 
-		 * <p>测试是否为 true。如果不是，将抛出 AssertionError。</p>
+		 * <p>测试是否为 true。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param condition condition to be checked 需要检查的状态。
 		 * @param message the identifying message for the AssertionError 错误信息。
@@ -90,7 +107,9 @@ package advancedflex.debugger.aut.framework {
 		/**
 		 * <p>Asserts that a condition is false.</p>
 		 * 
-		 * <p>测试是否为 false。如果不是，将抛出 AssertionError。</p>
+		 * <p>测试是否为 false。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param condition condition to be checked 需要检查的状态。
 		 * @param message the identifying message for the AssertionError 错误信息。
@@ -104,7 +123,9 @@ package advancedflex.debugger.aut.framework {
 		/**
 		 * <p>Asserts that an object is null.</p>
 		 * 
-		 * <p>测试对象是否为 null。如果不是，将抛出 AssertionError。</p>
+		 * <p>测试对象是否为 null。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param condition condition to be checked 需要检查的对象。
 		 * @param message the identifying message for the AssertionError 错误信息。
@@ -118,7 +139,9 @@ package advancedflex.debugger.aut.framework {
 		/**
 		 * <p>Asserts that an object isn't null.</p>
 		 * 
-		 * <p>测试对象是否不是 null。如果是，将抛出 AssertionError。</p>
+		 * <p>测试对象是否不是 null。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param object condition to be checked 需要检查的对象。
 		 * @param message the identifying message for the AssertionError 错误信息。
@@ -130,9 +153,11 @@ package advancedflex.debugger.aut.framework {
 		}
 
 		/**
-		 * <p>Asserts that two objects refer to the same object.</p>
+		 * <p>Asserts that two objects refer to the same object.It uses <code>==</code> to compare</p>
 		 * 
-		 * <p>测试两个对象是否是同一个对象(地址相同)。如果不是，将抛出 AssertionError。</p>
+		 * <p>测试两个对象是否是同一个对象(地址相同)。它用 <code>==</code> 来比较。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param expected the expected object 期待的对象（不能为 null ）。
 		 * @param actual the object to compare to expected 事实上得到的对象。
@@ -149,9 +174,11 @@ package advancedflex.debugger.aut.framework {
 		}
 
 		 /**
-		 * <p>Asserts that two objects do not refer to the same object.</p>
+		 * <p>Asserts that two objects do not refer to the same object.It uses <code>!=</code> to compare</p>
 		 * 
-		 * <p>测试两个对象是否不是同一个对象(地址相同)。如果是，将抛出 AssertionError。</p>
+		 * <p>测试两个对象是否不是同一个对象(地址相同)。它用 <code>!=</code> 来比较。</p>
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param expected the object you don't expect 不期待的对象（不能为 null ）。
 		 * @param actual the object to compare to unexpected 事实上得到的对象。
@@ -171,16 +198,18 @@ package advancedflex.debugger.aut.framework {
 		 * 
 		 * <p>让测试失败。</p>
 		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
+		 * 
 		 * @param message the identifying message or null for the AssertionError 错误信息。
 		 */
 		public static function fail(message:String = ""):void {	
 				errorMessage(message, "Fail");
 		}
 		
-		/**
-		 * @private
-		 * 
+		/*
 		 * throw AssertionError
+		 * 
+		 * @throws advancedflex.debugger.aut.framework.errors.AssertionError On error. 当出错时。
 		 * 
 		 * @param userMsg the message of user entered.
 		 * @param sysMsg the message of system(Assert) entered.
