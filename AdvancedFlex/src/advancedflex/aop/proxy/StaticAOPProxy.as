@@ -18,19 +18,32 @@ package advancedflex.aop.proxy
 		}
 		private function initMap():void {
 			var methods:XMLList = describeType(target).method;
+			methodMap = {};
 			for each(var i:XML in methods) {
-				methodMap[i.@name] = defaultPointcut;
+				var uri:String = (i.@uri).toString();
+				var localName:* = (i.@name).toString();
+				if(!methodMap[uri]) {
+					methodMap[uri] = new Dictionary();
+				}
+				methodMap[uri][localName] = defaultPointcut;
 			}
 		}
 		public override function $addPointcut(pointcut:Pointcut):void {
-			for(var i:String in methodMap) {
-				if(pointcut.match(i)) {
-					methodMap[i] = pointcut;
+			for(var uri:String in methodMap) {
+				for(var localName:String in methodMap[uri]) {
+					if(pointcut.match(uri, localName)) {
+						methodMap[uri][localName] = pointcut;
+					}
 				}
 			}
 		}
 		flash_proxy override function callProperty(name:*, ...args):* {
-			var pointcut:Pointcut = methodMap[name];
+			var pointcut:Pointcut;
+			if(name is QName) {
+				pointcut = methodMap[name.uri][name.localName];
+			}else{
+				pointcut = methodMap[""][name];
+			}
 			if(!pointcut) {
 				throw new ReferenceError("There is no such a method : " + name);
 			}

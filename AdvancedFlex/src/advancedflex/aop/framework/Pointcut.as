@@ -6,7 +6,7 @@ package advancedflex.aop.framework {
 		public function Pointcut(v:Advisor = null) {
 			jointPoint = new JointPoint(v);
 		}
-		public function match(name:*):Boolean {
+		public function match(uri:String, localName:String):Boolean {
 			throw new AbstractMethodError("Pointcut class is an Abstract class.");
 		}
 		public function get advisor():Advisor {

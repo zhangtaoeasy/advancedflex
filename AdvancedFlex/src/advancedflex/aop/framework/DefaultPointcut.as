@@ -8,7 +8,7 @@ package advancedflex.aop.framework
 		public function DefaultPointcut() {
 			super(new Advisor());
 		}
-		public override function match(qname:*):Boolean {
+		public override function match(uri:String, localName:String):Boolean {
 			return true;
 		}
 		
