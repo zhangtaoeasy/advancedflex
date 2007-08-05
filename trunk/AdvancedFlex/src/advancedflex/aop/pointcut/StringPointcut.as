@@ -5,15 +5,15 @@ package advancedflex.aop.pointcut
 
 	public class StringPointcut extends Pointcut
 	{
-		private var str:String;
-		public function StringPointcut(src:String, v:Advisor=null)
-		{
+		private var uri:String;
+		private var localName:String;
+		public function StringPointcut(localName:String, v:Advisor=null, uri:String = "") {
 			super(v);
-			str = src
+			this.uri = uri;
+			this.localName = localName
 		}
-		public final override function match(name:*):Boolean {
-			return name == str;
+		public final override function match(uri:String, localName:String):Boolean {
+			return this.localName === localName && this.uri === uri;
 		}
-		
 	}
 }
