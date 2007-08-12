@@ -48,9 +48,10 @@ package advancedflex.aop.pointcut {
 		/**
 		 * Create RegExpPointcut.<br/>
 		 * 创建RegExpPointcut。
+		 * 
 		 * @param uri The pattern of invoked method's URI. URI的模板。
 		 * @param localName The pattern of invoked method's name. 被调用的方法名的模板。
-		 * @param advisor 
+		 * @param advisor Advisor
 		 */
 		public function RegExpPointcut(uri:RegExp, localName:RegExp, advisor:Advisor = null) {
 			super(advisor);
@@ -61,8 +62,10 @@ package advancedflex.aop.pointcut {
 		/**
 		 * Check if given method matchs this Pointcut.<br/>
 		 * 检测给予的方法是否匹配本Pointcut。
+		 * 
 		 * @param uri Invoked method's URI. 被调用的方法的URI
 		 * @param localName Invoked method's name. 被调用的方法名。
+		 * 
 		 * @return true if matches. 如果匹配的话返回true，否则为false。
 		 */
 		public final override function match(uri:String, localName:String):Boolean {

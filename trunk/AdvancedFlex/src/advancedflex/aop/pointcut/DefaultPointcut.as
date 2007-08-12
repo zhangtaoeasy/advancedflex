@@ -17,74 +17,45 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------------------
-//文件名		: Pointcut.as
-//版本		: 0.1 alpha
-//简介		: Pointcut的抽象类
+//文件名		: DefaultPointcut.as
+//版本		: 0.2 beta
+//简介		: 默认的Pointcut。
 //历史
 //	YYYY/MM/DD 修改者		内容
+//	2007/08/05 Stephen		创建
+//	2007/08/11 Stephen		更改包(advancedflex.aop.framework -> advancedflex.aop.pointcut)
 //-------------------------------------------------------------------------------
-package advancedflex.aop.framework {
+package advancedflex.aop.pointcut {
 	
-	import advancedflex.errors.AbstractMethodError;
-	
-	use namespace aop;
-	
+	import advancedflex.aop.framework.Advisor;
+	import advancedflex.aop.framework.Pointcut;
+
 	/**
-	 * 
-	 * @author WeiHe
-	 * 
+	 * The default pointcut.
+	 * It can match all names.<br/>
+	 * 默认的Pointcut。
 	 */
-	public class Pointcut {
+	public class DefaultPointcut extends Pointcut {
 		
 		/**
-		* @private
-		*/
-		internal var jointPoint:JointPoint;
-		
-		/**
-		 * 
-		 * @param v
-		 * @return 
-		 * 
+		 * Create DefaultPointcut.<br/>
+		 * 创建DefaultPointcut。
 		 */
-		public function Pointcut(v:Advisor = null) {
-			jointPoint = new JointPoint(v);
+		public function DefaultPointcut() {
+			super(new Advisor());
 		}
 		
 		/**
+		 * Check if given method matchs this Pointcut.It alwats returns true.<br/>
+		 * 检测给予的方法是否匹配本Pointcut。它只会返回true。
 		 * 
-		 * @param uri
-		 * @param localName
-		 * @return 
+		 * @param uri Invoked method's URI. 被调用的方法的URI
+		 * @param localName Invoked method's name. 被调用的方法名。
 		 * 
+		 * @return true
 		 */
-		public function match(uri:String, localName:String):Boolean {
-			throw new AbstractMethodError("Pointcut class is an Abstract class.");
-		}
-		
-		/**
-		 * 
-		 * @return 
-		 * 
-		 */
-		public function get advisor():Advisor {
-			return jointPoint.advisor;
-		}
-		
-		/**
-		 * 
-		 * @param v
-		 * 
-		 */
-		public function set advisor(v:Advisor):void {
-			jointPoint.advisor = v;
-		}
-		
-		/**
-		 * @private
-		 */
-		aop function execute(methodInfo:MethodInfo):void {
-			jointPoint.execute(methodInfo);
+		public override function match(uri:String, localName:String):Boolean {
+			return true;
 		}
 	}
 }
