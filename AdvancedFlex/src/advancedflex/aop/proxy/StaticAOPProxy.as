@@ -44,6 +44,7 @@ package advancedflex.aop.proxy {
 			initMap();
 		}
 		
+		//init map
 		private function initMap():void {
 			var methods:XMLList = describeType(target).method;
 			methodMap = {};
@@ -57,6 +58,11 @@ package advancedflex.aop.proxy {
 			}
 		}
 		
+		/**
+		 * 
+		 * @param pointcut
+		 * 
+		 */
 		public override function $addPointcut(pointcut:Pointcut):void {
 			for(var uri:String in methodMap) {
 				for(var localName:String in methodMap[uri]) {
@@ -67,6 +73,9 @@ package advancedflex.aop.proxy {
 			}
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function callProperty(name:*, ...args):* {
 			var pointcut:Pointcut;
 			var uri:String, localName:String;

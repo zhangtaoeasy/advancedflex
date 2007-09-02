@@ -15,21 +15,18 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-//------------------------------------------------------------------------------
-//文件名		: 
-//版本		: 
-//简介		: 
-//历史
-//	YYYY/MM/DD 修改者		内容
-//-------------------------------------------------------------------------------
-package advancedflex.aop.advice {
-	
-	import advancedflex.aop.framework.MethodInfo;
-	import advancedflex.aop.framework.JointPoint;
-	
-	public interface IAroundAdvice {
-		
-		function excute(methodInfo:MethodInfo, jointPoint:JointPoint):void;
+package advancedflex.math.func {
+	/**
+	 * 微分
+	 */
+	public final class Differential {
+		public static function diff(f:Function, x:Number, delta:Number = 1e-8):Number {
+			return (f(x+delta) - f(x)) / delta;
+		}
+		public static function diffFunc(f:Function, delta:Number = 1e-8):Function {
+			return function(x:Number):Number {
+				return (f(x+delta) - f(x)) / delta;
+			};
+		}
 	}
 }

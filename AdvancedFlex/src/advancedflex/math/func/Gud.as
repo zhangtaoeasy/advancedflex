@@ -15,21 +15,28 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-//------------------------------------------------------------------------------
-//文件名		: 
-//版本		: 
-//简介		: 
-//历史
-//	YYYY/MM/DD 修改者		内容
-//-------------------------------------------------------------------------------
-package advancedflex.aop.advice {
+package advancedflex.math.func {
 	
-	import advancedflex.aop.framework.MethodInfo;
-	import advancedflex.aop.framework.JointPoint;
-	
-	public interface IAroundAdvice {
+	/**
+	 * Gudermannian function<br/>
+	 * 古德曼函数
+	 */
+	public final class Gud {
 		
-		function excute(methodInfo:MethodInfo, jointPoint:JointPoint):void;
+		/**
+		 * Gudermannian function<br/>
+		 * 古德曼函数
+		 */
+		public static function gd(x:Number):Number {
+			return 2*Math.atan( Math.exp(x) ) - Math.PI/2;
+		}
+		
+		/**
+		 * Anti-gudermannian function<br/>
+		 * 反古德曼函数
+		 */
+		public static function agd(x:Number):Number {
+			return Math.log( (1+Math.sin(x)) / (1-Math.sin(x)) ) / 2
+		}
 	}
 }

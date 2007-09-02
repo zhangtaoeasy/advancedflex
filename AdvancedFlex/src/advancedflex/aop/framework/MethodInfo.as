@@ -31,48 +31,47 @@
 package advancedflex.aop.framework {
 	
 	/**
-	 * 
-	 * @author WeiHe
-	 * 
+	 * The info of invoked method.<br/>
+	 * 被调用的方法的信息。
 	 */
 	public class MethodInfo {
 		
 		/**
-		* 
-		*/
+		 * The invoked method's target.
+		 */
 		public var target:*;
 		
 		/**
-		* 
-		*/
-		public var uri:String;//Add 2007/08/11
+		 * The invoked method's URI.
+		 */
+		public var uri:String;
 		
 		/**
-		* 
-		*/
-		public var name:String;//Change 2007/08/11 (var name:*; -> var name:String;)
+		 * The invoked method's localName.
+		 */
+		public var name:String;
 		
 		/**
-		* 
-		*/
+		 * The Array of invoked method's args.
+		 */
 		public var args:Array;
 		
 		/**
-		* 
-		*/
+		 * The invoked method's result.
+		 */
 		public var result:*;
 		
 		/**
+		 * Create MethodInfo.<br/>
+		 * 创建MethodInfo。
 		 * 
-		 * @param name
-		 * @param args
-		 * @param target
-		 * @return 
-		 * 
+		 * @param uri The invoked method's URI.
+		 * @param name The invoked method's localName.
+		 * @param args The Array of invoked method's args.
+		 * @param target The invoked method's target.
 		 */
 		public function MethodInfo(uri:String, name:String, args:Array, target:*) {
-				//Change 2007/08/11 (...name:*... -> ...uri:String, name:String...)
-			this.uri = uri;//Add 2007/08/11
+			this.uri = uri;
 			this.name = name;
 			this.args = args;
 			this.target = target;
@@ -80,9 +79,9 @@ package advancedflex.aop.framework {
 		}
 		
 		/**
+		 * invoke method
 		 * 
-		 * @return 
-		 * 
+		 * @return The result of the method is invoke.
 		 */
 		public function invoke():* {
 			result = target[name].apply(target, args);
@@ -90,13 +89,12 @@ package advancedflex.aop.framework {
 		}
 		
 		/**
+		 * Clone this instance.
 		 * 
-		 * @return 
-		 * 
+		 * @return The copy of this instance.
 		 */
 		public function clone():MethodInfo {
 			var result:MethodInfo = new MethodInfo(uri, name, args.slice(), target);
-				//Change 2007/08/11 ( ...(name... -> ...(uri, name... )
 			result.result = this.result;
 			return result;
 		}

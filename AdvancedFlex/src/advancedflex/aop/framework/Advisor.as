@@ -24,20 +24,22 @@
 //	YYYY/MM/DD 修改者		内容
 //	2007/07/29 Stephen		创建
 //	2007/08/05 Stephen		添加exception
+//	2007/08/12 Stephen		Add comment
 //-------------------------------------------------------------------------------
 package advancedflex.aop.framework {
 	
 	/**
-	 * Abstract AOP advisor.
-	 * 
-	 * @author Stephen
+	 * Abstract AOP advisor.<br/>
+	 * 抽象的AOP advisor。
 	 */
 	public class Advisor {
 		
 		/**
+		 * Callback around a given method.
+		 * 在进入切入点周围执行。
 		 * 
-		 * @param methodInfo
-		 * @param joinPoint
+		 * @param methodInfo Info of given method. 调用方法的信息。
+		 * @param jointPoint Joint Point 切入点
 		 */
 		public function around(methodInfo:MethodInfo, jointPoint:JointPoint):void {
 			jointPoint.proceed(methodInfo);
@@ -63,14 +65,35 @@ package advancedflex.aop.framework {
 			
 		}
 		
+		/**
+		 * Callback after a given method throwing an Error.<br/>
+		 * 在JointPoint抛出错误后执行。
+		 * 
+		 * @param methodInfo Info of given method. 调用方法的信息。
+		 * @param error The Error that given method throws.
+		 */
 		public function throwing(methodInfo:MethodInfo, error:Error):void {
 			throw error;
 		}
 		
+		/**
+		 * Callback after a given method throwing any Object except Error.<br/>
+		 * 在JointPoint抛出非Error的对象后执行。
+		 * 
+		 * @param methodInfo Info of given method. 调用方法的信息。
+		 * @param exception The Object that given method throws.
+		 * 
+		 */
 		public function exception(methodInfo:MethodInfo, exception:*):void {
 			throw exception;
 		}
 		
+		/**
+		 * Callback after a given method.Even if it is success or failure.<br/>
+		 * 在JointPoint后执行，无论成功与否。
+		 * 
+		 * @param methodInfo Info of given method. 调用方法的信息。
+		 */
 		public function after(methodInfo:MethodInfo):void {
 			
 		}
