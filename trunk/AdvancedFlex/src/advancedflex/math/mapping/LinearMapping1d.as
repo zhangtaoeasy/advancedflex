@@ -2,7 +2,7 @@ package advancedflex.math.mapping {
 	import flash.geom.Point;
 	
 	public class LinearMapping1d implements IMapping1d {
-		var a:Number, b:Number
+		protected var a:Number, b:Number;
 		
 		/*斜截式*/
 		public function LinearMapping1d(a:Number = 1, b:Number = 0) {

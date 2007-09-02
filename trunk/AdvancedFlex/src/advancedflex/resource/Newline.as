@@ -15,21 +15,23 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-//------------------------------------------------------------------------------
-//文件名		: 
-//版本		: 
-//简介		: 
-//历史
-//	YYYY/MM/DD 修改者		内容
-//-------------------------------------------------------------------------------
-package advancedflex.aop.advice {
-	
-	import advancedflex.aop.framework.MethodInfo;
-	import advancedflex.aop.framework.JointPoint;
-	
-	public interface IAroundAdvice {
+package advancedflex.resource {
+	public class Newline {
 		
-		function excute(methodInfo:MethodInfo, jointPoint:JointPoint):void;
+		public static const WINDOWS:String = "\n\r";
+		
+		public static const UNIX_LIKE:String = "\n";
+		
+		public static const BREAK:String = "\r";
+		
+		private static var defa:String = UNIX_LIKE;
+		
+		public static function get defaultNewline():String {
+			return defa;
+		}
+		
+		public static function set defaultNewline(v:String):void {
+			defa = v;
+		}
 	}
 }

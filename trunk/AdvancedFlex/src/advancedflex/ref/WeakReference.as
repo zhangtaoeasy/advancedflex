@@ -15,21 +15,45 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-//------------------------------------------------------------------------------
-//文件名		: 
-//版本		: 
-//简介		: 
-//历史
-//	YYYY/MM/DD 修改者		内容
-//-------------------------------------------------------------------------------
-package advancedflex.aop.advice {
+package advancedflex.ref {
 	
-	import advancedflex.aop.framework.MethodInfo;
-	import advancedflex.aop.framework.JointPoint;
+	import flash.utils.Dictionary;
 	
-	public interface IAroundAdvice {
+	/**
+	 * 弱参照
+	 * @see advancedflex.ref.Reference
+	 */
+	public final class WeakReference implements IReference {
 		
-		function excute(methodInfo:MethodInfo, jointPoint:JointPoint):void;
+		/**
+		 * @private
+		 * 参照对象的保存对象
+		 */
+		private var _holder:Dictionary;
+		
+		/**
+		 * 创建一个弱参照
+		 * @param target 参照对象
+		 */
+		public function WeakReference(target:*) {
+			_holder = new Dictionary(true);
+			_holder[target] = null;
+		}
+		
+		/**
+		 * 参照对象
+		 * @return 参照对象
+		 */
+		public function get target():* {
+			for(var i:* in _holder) {
+				return i;
+			}
+		}
+		
+		public function set target(v:*):void {
+			for(var i:* in _holder) {
+				_holder[i] = v;
+			}
+		}
 	}
 }

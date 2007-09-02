@@ -35,14 +35,13 @@ package advancedflex.aop.framework {
 	use namespace flash_proxy;
 	
 	/**
-	 * 
-	 * @author WeiHe
-	 * 
+	 * The abstract class of AOP proxy.
+	 * 抽象的AOP代理类
 	 */
 	public dynamic class AOPProxy extends Proxy {
 		
 		/**
-		 * Default pointcut.<br/>
+		 * Default pointcut.It does nothing.<br/>
 		 * 默认的Pointcut。
 		 */
 		protected static const defaultPointcut:Pointcut = new DefaultPointcut();
@@ -72,36 +71,63 @@ package advancedflex.aop.framework {
 			throw new AbstractMethodError();
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function callProperty(name:*, ...args):* {
 			throw new AbstractMethodError();
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function deleteProperty(name:*):Boolean {
 			return delete target[name];
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function getDescendants(name:*):* {
 			return target.descendants(name);
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function getProperty(name:*):* {
 			return target[name];
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function setProperty(name:*, value:*):void {
 			target[name] = value;
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function hasProperty(name:*):Boolean {
 			return target.hasOwnProperty(name);
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function isAttribute(name:*):Boolean {
 			return !(target[name] is Function);
 		}
 		
+		/**
+		 * @private
+		 */
 		protected var _item:Array; // array of object's properties
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function nextNameIndex (index:int):int {
 			if (index == 0) {
 				_item = new Array();
@@ -117,10 +143,16 @@ package advancedflex.aop.framework {
 			}
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function nextName(index:int):String {
 			return _item[index - 1];
 		}
 		
+		/**
+		 * @private
+		 */
 		flash_proxy override function nextValue(index:int):* {
 			return target[_item[index - 1]];
 		}

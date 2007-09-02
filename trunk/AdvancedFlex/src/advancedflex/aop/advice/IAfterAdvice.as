@@ -15,12 +15,31 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------------------
+//文件名		: IAfterAdvice.as
+//版本		: 0.1
+//简介		: 
+//历史
+//	YYYY/MM/DD 修改者		内容
+//	2007/08/12 Stephen		Create
+//	2007/08/19 Stephen		Change 
+//								excute -> after
+//-------------------------------------------------------------------------------
 package advancedflex.aop.advice {
 	
 	import advancedflex.aop.framework.MethodInfo;
 	
+	/**
+	 * 
+	 */
 	public interface IAfterAdvice {
 		
-		function execute(methodInfo:MethodInfo):void
+		/**
+		 * 
+		 * @param methodInfo
+		 * 
+		 */
+		function after(methodInfo:MethodInfo):void;
 	}
 }

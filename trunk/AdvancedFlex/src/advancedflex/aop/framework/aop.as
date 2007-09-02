@@ -18,7 +18,7 @@
 
 //------------------------------------------------------------------------------
 //文件名		: advancedflex/aop/framework/aop.as
-//版本		: 0.1 alpha
+//版本		: 0.2 beta
 //简介		: 在AOP里面用于防止命名冲突的命名空间。
 //历史
 //	YYYY/MM/DD 修改者		内容
@@ -29,6 +29,5 @@ package advancedflex.aop.framework {
 	/**
 	 * 在AOP里面用于防止命名冲突的命名空间。
 	 */
-	public namespace aop = "http://code.google.com/p/advancedflex/aop/framework/aop"
-	
+	public namespace aop = "http://code.google.com/p/advancedflex/aop/framework/aop";
 }

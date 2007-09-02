@@ -8,28 +8,46 @@ package advancedflex.js {
 	[DefaultProperty("source")]
 	public class JavaScript extends EventDispatcher implements IMXMLObject {
 		
-		public var autoRun:Boolean = false;
+		/**
+		 * If true,eval expression on this instance created,otherwise do nothing.
+		 */
+		public var autoEval:Boolean = false;
 		
 		private var src:String;
 		
+		/**
+		 * Create JavaScript.
+		 */
 		public function JavaScript() {
 			super(this);
 		}
 		
+		/**
+		 * @private
+		 */
 		public function initialized(document:Object, id:String):void {
-			if(autoRun) {
-				run();
+			if(autoEval) {
+				eval();
 			}
 		}
-		public function run():void {
-			var u:URLRequest = new URLRequest ("javascript:eval('" + src + "');");
-			navigateToURL(u,"_self");
+		
+		/**
+		 * Eval the Java script is given.<br/>
+		 * 执行给予的JavaScript。
+		 */
+		public function eval():void {
+			JS.eval(src);
 		}
+		
+		/**
+		 * The JacaScript source.
+		 */
 		public function set source(src:String):void {
-			if (src != null) {
-				var commentPattern:RegExp = /(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/)|((^|[^:\/])(\/\/.*))/g;
-				this.src = src.replace (commentPattern, "");
-			}
+			this.src = src
+		}
+		
+		public function get source():String {
+			return src;
 		}
 	}
 }
