@@ -27,48 +27,193 @@ package advancedflex.resource {
 	import mx.utils.StringUtil;
 	//TODO uncheck
 	public class Properties implements IExternalizable {
-		public function Properties() {
-			content = new Object();
-		}
+		
+		/**
+		 * Properties Holder
+		 */
 		protected var content:Object;
 		
-		public function put(key:String, value:String):void {
-			content[key] = value;
+		public function Properties() {
+			content = new Dictionary();
 		}
 		
-		public function putNumber(key:String, value:Number):void {
-			content[key] = value;
+		public function put(key:String, value:*):void {
+			switch(content[key].type) {
+				case "String":
+					content[key].value = String(value);
+					break;
+				case "Integer":
+					content[key].value = int(value);
+					break;
+				case "UnsignedInteger":
+					content[key].value = uint(value);
+					break;
+				case "Short":
+					if(Math.abs(value) > 0x7FFF) {
+						throw new RangeError("Short must be [-0x7FFF, 0x7FFF].")
+					}
+					content[key].value = int(value);
+					break;
+				case "Byte":
+		
+				case "Float":
+		
+				case "Double":
+				
+				case "Boolean":
+		
+				case "Date":
+		
+				case "Array":
+		
+				case "Class":
+		
+				case "Namespace":
+		
+				case "Binary":
+		
+				case "Object":
+		
+				case "QName":
+		
+				case "RegExp":
+		
+				case "XML":
+		
+				case "XMLList":
+			}
 		}
 		
+		public function putString(key:String, value:String):void {
+			var item:* = content[key];
+			if(item) {
+				item.type = PropertiesType.STRING;
+				item.value = value;
+			}else{
+				item = new Item(PropertiesType.STRING, value);			
+			}
+		}
+		
+		public function putInt(key:String, value:int):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.INTEGER
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.INTEGER, value);			
+			}
+		}
+		
+		public function putUInt(key:String, value:uint):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.UNSIGNED_INTEGER
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.UNSIGNED_INTEGER, value);			
+			}
+		}
+		public function putFloat(key:String, value:Number):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.FLOAT
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.FLOAT, value);			
+			}
+		}
+		public function putDouble(key:String, value:Number):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.DOUBLE
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.DOUBLE, value);			
+			}
+		}
+		public function putShort(key:String, value:int):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.SHORT
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.SHORT, value);			
+			}
+		}
+		public function putBtye(key:String, value:int):void {
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.BYTE
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.BYTE, value);			
+			}
+		}
 		public function putBoolean(key:String, value:Boolean):void {
-			content[key] = value;
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.BOOLEAN
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.BOOLEAN, value);			
+			}
 		}
 		
 		public function putArray(key:String, value:Array, splitCode:String = ","):void {
-			content[key] = value.join(splitCode);
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.ARRAY
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.ARRAY, value);			
+			}
 		}
 		
 		public function putClass(key:String, value:Class):void {
-			content[key] = getQualifiedClassName(value);
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.CLASS;
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.CLASS, value);			
+			}
 		}
 		
 		public function putDate(key:String, value:Date):void {
-			content[key] = value.toString();
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.DATE;
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.DATE, value);			
+			}
 		}
 		
 		public function putNamespace(key:String, value:Namespace):void {
-			content[key] = value.uri;
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.NAMESPACE;
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.NAMESPACE, value);			
+			}
 		}
 		public function putBinary(key:String, value:ByteArray):void {
-			content[key] = Base64Encoder.encodeByteArray(value);
+			var item:* = content[key];
+			if(item) {
+				content[key].type = PropertiesType.BINARY;
+				content[key].value = value;
+			}else{
+				item = new Item(PropertiesType.BINARY, value);			
+			}
 		}
 		public function putObject(key:String, value:*):void {
 			if(value is String) {
+				putString(key, value);
+			}else if(value is Number) {
 				put(key, value);
 			}else if(value is Number) {
-				putNumber(key, value);
-			}else if(value is Number) {
-				putNumber(key, value);
+				putDouble(key, value);
 			}else if(value is Boolean) {
 				putBoolean(key, value);
 			}else if(value is Array) {
@@ -90,7 +235,13 @@ package advancedflex.resource {
 			}else{//Other
 				var bytes:ByteArray = new ByteArray();
 				bytes.writeObject(value);
-				content[key] = Base64Encoder.encodeByteArray(bytes);
+				var item:* = content[key];
+				if(item) {
+					content[key].type = PropertiesType.OBJECT;
+					content[key].value = bytes;
+				}else{
+					item = new Item(PropertiesType.OBJECT, value);			
+				}
 			}
 		}
 		
@@ -236,5 +387,17 @@ package advancedflex.resource {
 		public function writeExternal(output:IDataOutput):void {
 			writeStream(output, OUT_UTF);
 		}
+	}
+}
+
+class Item {
+	
+	internal var type:String;
+	
+	internal var value:*;
+	
+	public function Item(type:String = "", value:* = null) {
+		this.type = type;
+		this.value = value;
 	}
 }

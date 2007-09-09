@@ -16,20 +16,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 package advancedflex.resource {
-	public class Newline {
+	
+	/**
+	 * 换行符
+	 */
+	public final class Newline {
 		
-		public static const WINDOWS:String = "\n\r";
+		/**
+		 * Windows的模式(CR LF)。
+		 */
+		public static const WINDOWS:String = "\r\n";
 		
+		/**
+		 * Unix系(包括Linux)的模式(LF)。
+		 */
 		public static const UNIX_LIKE:String = "\n";
 		
-		public static const BREAK:String = "\r";
+		/**
+		 * Apple Macintosh的模式(CR)。
+		 */
+		public static const APPLE:String = "\r";
 		
 		private static var defa:String = UNIX_LIKE;
 		
+		/**
+		 * 默认的换行符。默认为<code>UNIX_LIKE</code>。
+		 * @return 默认的换行符。
+		 */
 		public static function get defaultNewline():String {
 			return defa;
 		}
-		
 		public static function set defaultNewline(v:String):void {
 			defa = v;
 		}
