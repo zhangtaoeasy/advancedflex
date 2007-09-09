@@ -19,15 +19,37 @@ package advancedflex.io.format {
 	
     import flash.utils.ByteArray;
     
+    /**
+	 * Base64的编码器
+	 */
     public final class Base64Encoder {
-        public static function encode(src:String, charSet:String = Base64CharSet.RFC_2045):String {
+    	
+        /**
+         * 用String来编码
+         * @param src 原文
+         * @param charSet Base64字符集，默认为 Base64CharSet.RFC_3548
+         * @return 密文（原文编码后的数据）
+         * 
+         * @see Base64CharSet#RFC_3548
+         */
+        public static function encode(src:String, charSet:String = ""):String {
             // Convert string to ByteArray
             var bytes:ByteArray = new ByteArray();
             bytes.writeUTFBytes(src);
             // Return encoded ByteArray
-            return encodeByteArray(bytes, charSet);
+            return encodeByteArray(bytes, charSet ? charSet : Base64CharSet.RFC_3548);
         }
-        public static function encodeByteArray(data:ByteArray, charSet:String = Base64CharSet.RFC_2045):String {
+        
+        /**
+         * 用ByteArray来编码
+         * @param src 原文
+         * @param charSet Base64字符集，默认为 Base64CharSet.RFC_3548
+         * @return 密文（原文编码后的数据）
+         * 
+         * @see Base64CharSet#RFC_3548
+         */
+        public static function encodeByteArray(data:ByteArray, charSet:String = ""):String {
+            charSet = charSet ? charSet : Base64CharSet.RFC_3548;
             // Initialise output
             var output:String = "";
             // Create data and output buffers
