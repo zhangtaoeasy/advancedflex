@@ -61,7 +61,7 @@ package advancedflex.debugger.aut.framework {
 			if(actual == null)
 				errorMessage(message, "Actual is null.");
 			if(ObjectUtil.compare(expected, actual, -1) != 0) {
-				errorMessage(message, "expected:<" + expected + "> but not was:<" + actual + ">");
+				errorMessage(message, "expected:<" + expected + "> but was:<" + actual + ">");
 			}
 		}
 		
