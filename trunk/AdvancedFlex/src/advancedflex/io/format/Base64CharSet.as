@@ -23,13 +23,13 @@ package advancedflex.io.format {
 	public final class Base64CharSet {
 		
 		/**
-		 * 在RFC-3548里定义的一般的字符集
+		 * 在<strong>RFC-3548</strong>里定义的一般的字符集
 		 */
 		public static const RFC_3548:String = 
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 			
 		/**
-		 * 在RFC-3548里定义的为了URL与文件名(Filename)anquan的字符集(URL and Filename safe)。
+		 * 在<strong>RFC-3548</strong>里定义的为了URL与文件名(Filename)anquan的字符集(URL and Filename safe)。
 		 */
 		public static const RFC_3548_URL_AMD_FILENAME_SAFE:String =
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=";
