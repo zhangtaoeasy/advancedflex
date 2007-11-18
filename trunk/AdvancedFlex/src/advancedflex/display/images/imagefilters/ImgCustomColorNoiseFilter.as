@@ -1,3 +1,20 @@
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////
 package advancedflex.display.images.imagefilters {
 	
 	import flash.display.BitmapData;
@@ -33,7 +50,7 @@ package advancedflex.display.images.imagefilters {
 			destPoint:Point):void
 		{
 			if(!(inputBitmapData && outputBitmapData )) {
-				throw new ArgumentError("BitmapData is null.");
+				throw new ArgumentError("BitmapData must not be null.");
 			}
 			if(colors.length != pixels.length) {
 				throw new ArgumentError("colors.length != ratios.length.");
