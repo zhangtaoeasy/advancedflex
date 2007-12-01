@@ -6,6 +6,11 @@
       * advancedflex.aop.context _(pre-alpha)_
       * advancedflex.aop.pointcut _(pre-alpha)_
       * advancedflex.aop.proxy _(pre-alpha)_
+    * advancedflex.afgl _(pre-alpha)_
+      * advancedflex.afgl.drawing _(pre-alpha)_
+      * advancedflex.afgl.images _(pre-alpha)_
+        * advancedflex.afgl.images.filters _(pre-alpha)_
+        * advancedflex.afgl.images.imgfilters _(pre-alpha)_
     * advancedflex.collections
     * advancedflex.core
       * advancedflex.core.errors
@@ -33,8 +38,9 @@
       * advancedflex.math.number
       * advancedflex.math.func
       * advancedflex.math.geom
+      * advancedflex.math.mapping
+      * advancedflex.math.fuzzy
     * advancedflex.media
       * advancedflex.media.fx
     * advancedflex.utils
     * advancedflex.xml
-
