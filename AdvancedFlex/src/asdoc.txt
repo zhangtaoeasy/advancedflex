@@ -1,7 +1,0 @@
-asdoc 
--doc-sources "C:\Documents and Settings\WeiHe\workspace\AdvancedFlex\src" 
--main-title "Advanced Flex" 
--window-title "Advanced Flex" 
--output "C:\Documents and Settings\WeiHe\workspace\AdvancedFlex\doc"
-exit
- 
