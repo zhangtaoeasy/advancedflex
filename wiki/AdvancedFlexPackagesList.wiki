@@ -16,12 +16,12 @@
       * advancedflex.core.errors
     * advancedflex.errors
     * advancedflex.debugger *(beta)*
+      * advancedflex.debugger.utils. *(alpha)*
       * advancedflex.debugger.aut. *(alpha)*
         * advancedflex.debugger.aut.framework *(alpha)*
           * advancedflex.debugger.aut.framework.errors *(alpha)*
           * advancedflex.debugger.aut.framework.ns *(alpha)*
         * advancedflex.debugger.aut.io *(alpha)*
-        * advancedflex.debugger.aut.flexui *(alpha)*
         * advancedflex.debugger.aut.traceui *(alpha)*
         * advancedflex.debugger.aut.airui *(alpha)*
         * advancedflex.debugger.aut.flexui *(alpha)*
