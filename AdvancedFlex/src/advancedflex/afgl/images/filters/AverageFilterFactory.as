@@ -82,12 +82,12 @@ package advancedflex.afgl.images.filters {
 		public function create():BitmapFilter {
 			
 			//Base Matrix
-			var matrix = new ColorMatrixFilter([
+			var matrix:Array = [
 				1, 0, 0, 0, 0,
 				0, 1, 0, 0, 0,
 				0, 0, 1, 0, 0,
 				0, 0, 0, 1, 0,
-			]);
+			];
 			
 			//SourceChannel or DestChannel is null.
 			if(!sourceChannel || !destChannel) {
@@ -103,7 +103,7 @@ package advancedflex.afgl.images.filters {
 					0,   0,   0,   1, 0,
 				]);
 			}
-			var o1:int = -1,o2 = -1:int = -1,o3:int = -1,o4:int = -1;
+			var o1:int = -1,o2:int = -1,o3:int = -1,o4:int = -1;
 			var offset:Array = new Array(0);
 			var index:int = 0;
 			if(sourceChannel & BitmapDataChannel.RED) {
@@ -134,7 +134,7 @@ package advancedflex.afgl.images.filters {
 				case 2:
 					o2 = offset[1];
 			}
-			var avg:Number = 1 / count;
+			var avg:Number = 1 / index;
 			if(destChannel & BitmapDataChannel.RED)	{
 				matrix[o1] = matrix[o2] = matrix[o3] = matrix[o4] = avg;
 			}

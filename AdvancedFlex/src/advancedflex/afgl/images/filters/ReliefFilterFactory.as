@@ -30,7 +30,7 @@ package advancedflex.afgl.images.filters {
 	public class ReliefFilterFactory implements IBitmapFilterFactory {
 		
 		/* Relief Direction */
-		private var $dirction:int;
+		private var $direction:int;
 		
 		/* Relief Level*/
 		private var $level:Number;
@@ -54,12 +54,12 @@ package advancedflex.afgl.images.filters {
 		 * 浮雕的方向。
 		 */
 		public function get direction():int {
-			return $dirction;
+			return $direction;
 		}
 		
 		public function set direction(v:int):void {
-			if($dirction>=1 && $dirction <=8) {
-				$dirction = v;
+			if($direction>=1 && $direction <=8) {
+				$direction = v;
 				$changed = true;
 			}else{
 				throw new ArgumentError(
@@ -88,10 +88,10 @@ package advancedflex.afgl.images.filters {
 		 */
 		public function ReliefFilterFactory(
 			direction:int, 
-			level = 1, 
+			level:Number = 1, 
 			bias:int = 128) 
 		{
-			$dirction = direction;
+			$direction = direction;
 			$level =level;
 			this.bias = bias;
 		}
@@ -126,11 +126,12 @@ package advancedflex.afgl.images.filters {
 		 * @return ReliefFilterFactory 对象。
 		 */
 		public function clone():IBitmapFilterFactory {
-			return new ReliefFilterFactory($dirction, $level, bias);
+			return new ReliefFilterFactory($direction, $level, bias);
 		}
 		
 		/* Set up Matrix */
 		private function $setUpMatrix():void {
+			var n:Number = $level;
 			switch ($direction) {
 				case FilterDirection.RIGHT :
 					$matrix = [

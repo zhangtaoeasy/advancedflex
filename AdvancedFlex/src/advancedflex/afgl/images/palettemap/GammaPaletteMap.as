@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
 //
@@ -38,7 +38,7 @@ package advancedflex.afgl.images.palettemap {
 		}
 		
 		protected function resetGamma(gamma:Number):void {
-			checkGamma(g);
+			$checkGamma(gamma);
 			$gamma = gamma;
 			var redArray:Array = redMap || new Array(256);
 			var greenArray:Array = greenMap || new Array(256);
@@ -49,10 +49,10 @@ package advancedflex.afgl.images.palettemap {
 			    greenArray[i] = blueArray[i] << 8;
 			    redArray[i] = blueArray[i] << 16;
 			}
-			reset(redArray, gamma, blueArray);
+			reset(redArray, greenArray, blueArray);
 		}
 		
-		private function checkGamma(g:Number):void {
+		private function $checkGamma(g:Number):void {
 			if(g<=0) {
 				throw new ArgumentError("Gamma must be greater than 0.")
 			}

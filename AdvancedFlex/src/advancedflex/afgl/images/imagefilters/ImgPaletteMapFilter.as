@@ -17,11 +17,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 package advancedflex.afgl.images.imagefilters {
 	
-	import advancedflex.display.images.palettemap.PaletteMap;
+	import advancedflex.afgl.images.palettemap.PaletteMap;
 	
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import advancedflex.afgl.images.palettemap.PaletteMap;
 
 	/**
 	 * 调色板映射滤镜。

@@ -16,7 +16,7 @@ package advancedflex.math.random {
 		}
 		protected var mu:Number = 0.5;
 		protected var sigma:Number = 1/3;
-		public final override function $random():Number {
+		public final override function random():Number {
 			var result:Number;
 			do {
 				result = $random();
