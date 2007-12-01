@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--/////////////////////////////////////////////////////////////////////////////
+//Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+///////////////////////////////////////////////////////////////////////////// -->
+
+<project name="ASDoc build" default="main">
+	<!-- defines all values for the ASDoc compiler -->
+	<property file="system.properties" />
+	<property file="asdoc.properties" />
+	<!-- main target: cleans and compiles ASDocs -->
+	<target name="main" depends="setup, log, create-docs" />
+	<!-- deletes and recreates the asdoc directory -->
+	<target name="setup">
+		<delete dir="${root.dir}${output.dir}" />
+		<mkdir dir="${root.dir}${output.dir}" />
+		<copy todir="${root.dir}${temp.dir}">
+			<fileset dir="${root.dir}${src.dir}">
+				<exclude name="**/tests"/>
+			</fileset>
+		</copy>
+	</target>
+	<!-- runs the asdoc.exe compiler on the source -->
+	<target name="create-docs">
+		<exec executable="${asdoc.exe}" failonerror="true">
+			<arg line="-doc-sources '${root.dir}${src.dir}'" />
+			<arg line="-main-title '${main.title}'" />
+			<arg line="-window-title '${window.title}'" />
+			<arg line="-output '${root.dir}${output.dir}'" />
+		</exec>
+	</target>
+	<!-- writes asdoc output to log file: log.txt -->
+	<target name="log">
+		<record name="${root.dir}${output.dir}/asdoc-log.log" 
+				action="start" 
+				append="true" 
+		/>
+	</target>
+</project>

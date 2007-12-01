@@ -18,6 +18,8 @@
 
 package advancedflex.afgl.images.filters {
 	import flash.filters.BitmapFilter;
+	import flash.filters.ConvolutionFilter;
+	import flash.errors.IllegalOperationError;
 
 	/**
 	 * 锐化滤镜工厂。
@@ -99,7 +101,7 @@ package advancedflex.afgl.images.filters {
 		}
 		/* Set up Matrix */
 		private function $setUpMatrix():void {
-			var a:Number = -$level;
+			var a:Number = -$level / 100;
 			var b:Number = a * (-8) + 1;
 			$matrix = [
 				a, a, a, 

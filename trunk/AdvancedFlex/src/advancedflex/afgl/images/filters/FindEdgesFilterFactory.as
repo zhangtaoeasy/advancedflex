@@ -11,7 +11,7 @@ package advancedflex.afgl.images.filters {
 	public class FindEdgesFilterFactory implements IBitmapFilterFactory {
 		
 		/* Finding Edges' Direction */
-		private var $dirction:int;
+		private var $direction:int;
 		
 		/* Finding Edges' Level*/
 		private var $level:Number;
@@ -20,12 +20,12 @@ package advancedflex.afgl.images.filters {
 		 * 查找的方向。
 		 */
 		public function get direction():int {
-			return $dirction;
+			return $direction;
 		}
 		
 		public function set direction(v:int):void {
-			if($dirction>=1 && $dirction <=8) {
-				$dirction = v;
+			if($direction>=1 && $direction <=8) {
+				$direction = v;
 				$changed = true;
 			}else{
 				throw new ArgumentError(
@@ -55,6 +55,14 @@ package advancedflex.afgl.images.filters {
 		/* If this instance changed. */
 		private var $changed:Boolean = true;
 		
+		public function FindEdgesFilterFactory(
+			direction:int, 
+			level:Number = 1) 
+		{
+			$direction = direction;
+			$level = level;
+		}
+		
 		public function create():BitmapFilter {
 			if($alive) {
 				if($changed) {
@@ -71,43 +79,46 @@ package advancedflex.afgl.images.filters {
 		}
 		
 		public function clone():IBitmapFilterFactory {
-			return new FindEdgesFilterFactory($dirction, $level);
+			return new FindEdgesFilterFactory($direction, $level);
 		}
 		/* Set up Matrix */
 		private function $setUpMatrix():void {
-			switch (_direction) {
+			var n:Number = $level;
+			switch ($direction) {
 				case FilterDirection.RIGHT :
 				case FilterDirection.LEFT :
-					matrix = [
+					$matrix = [
 						0,  0,  0, 
 						n,-2*n, n, 
 						0,  0,  0,
 					];
 				break;
+				
 				case FilterDirection.TOP_RIGHT :
 				case FilterDirection.BOTTOM_LEFT :
-					matrix = [
+					$matrix = [
 						0,  0,  n, 
 						0,-2*n, 0, 
 						n,  0,  0,
 					];
 				break;
+				
 				case FilterDirection.TOP :
 				case FilterDirection.BOTTOM :
-					matrix = [
+					$matrix = [
 						0,  n,  0, 
 						0,-2*n, 0, 
 						0,  n,  0,
 					];
 				break;
+				
 				default://FilterDirection.TOP_LEFT
 						//FilterDirection.BOTTOM_RIGHT
-					matrix = [
+					$matrix = [
 						n,  0,  0, 
 						0,-2*n, 0, 
 						0,  0,  n,
 					];
-				break;
 			}
 		}
 	}

@@ -23,6 +23,9 @@ package advancedflex.afgl.images.filters {
 	import flash.display.BitmapDataChannel;
 	import flash.filters.BitmapFilter;
 	import flash.filters.DisplacementMapFilterMode;
+	import flash.errors.IllegalOperationError;
+	import advancedflex.afgl.images.ImageBufferManager;
+	import flash.filters.DisplacementMapFilter;
 
 	/**
 	 * 扩散滤镜工厂。

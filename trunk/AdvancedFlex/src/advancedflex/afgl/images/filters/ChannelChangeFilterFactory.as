@@ -47,9 +47,6 @@ package advancedflex.afgl.images.filters {
 		/*Alpha Channel*/
 		private var $alphaCh:uint;
 		
-		/*是否为活动的(dispose 后将会为 false )*/
-		private var $alive:Boolean = true;
-		
 		/**
 		 * 红色通道。
 		 * @return 红色通道。
@@ -58,18 +55,12 @@ package advancedflex.afgl.images.filters {
 			return $redCh;
 		}
 		
-		public function set redChannel(v:uint) {
-			if($alive) {
-				$redCh = v & 0xF;
-				
-				$matrix[0] = $redCh & BitmapDataChannel.RED   ? 1 : 0;
-				$matrix[1] = $redCh & BitmapDataChannel.GREEN ? 1 : 0;
-				$matrix[2] = $redCh & BitmapDataChannel.BLUE  ? 1 : 0;
-				$matrix[3] = $redCh & BitmapDataChannel.ALPHA ? 1 : 0;
-			}else{
-				throw new IllegalOperationError(
-					"This FilterFactory is disposed.");
-			}
+		public function set redChannel(v:uint):void {
+			$redCh = v & 0xF;
+			$matrix[0] = $redCh & BitmapDataChannel.RED   ? 1 : 0;
+			$matrix[1] = $redCh & BitmapDataChannel.GREEN ? 1 : 0;
+			$matrix[2] = $redCh & BitmapDataChannel.BLUE  ? 1 : 0;
+			$matrix[3] = $redCh & BitmapDataChannel.ALPHA ? 1 : 0;
 		}
 		
 		/**
@@ -80,18 +71,12 @@ package advancedflex.afgl.images.filters {
 			return $greenCh;
 		}
 		
-		public function set greenChannel(v:uint) {
-			if($alive) {
-				$redCh = v & 0xF;
-				
-				$matrix[5] = $greenCh & BitmapDataChannel.RED   ? 1 : 0;
-				$matrix[6] = $greenCh & BitmapDataChannel.GREEN ? 1 : 0;
-				$matrix[7] = $greenCh & BitmapDataChannel.BLUE  ? 1 : 0;
-				$matrix[8] = $greenCh & BitmapDataChannel.ALPHA ? 1 : 0;
-			}else{
-				throw new IllegalOperationError(
-					"This FilterFactory is disposed.");
-			}
+		public function set greenChannel(v:uint):void {
+			$redCh = v & 0xF;
+			$matrix[5] = $greenCh & BitmapDataChannel.RED   ? 1 : 0;
+			$matrix[6] = $greenCh & BitmapDataChannel.GREEN ? 1 : 0;
+			$matrix[7] = $greenCh & BitmapDataChannel.BLUE  ? 1 : 0;
+			$matrix[8] = $greenCh & BitmapDataChannel.ALPHA ? 1 : 0;
 		}
 		
 		/**
@@ -103,18 +88,12 @@ package advancedflex.afgl.images.filters {
 			return $blueCh;
 		}
 		
-		public function set blueChannel(v:uint) {
-			if($alive) {
-				$blueCh = v & 0xF;
-				
-				$matrix[10] = $blueCh & BitmapDataChannel.RED   ? 1 : 0;
-				$matrix[11] = $blueCh & BitmapDataChannel.GREEN ? 1 : 0;
-				$matrix[12] = $blueCh & BitmapDataChannel.BLUE  ? 1 : 0;
-				$matrix[13] = $blueCh & BitmapDataChannel.ALPHA ? 1 : 0;
-			}else{
-				throw new IllegalOperationError(
-					"This FilterFactory is disposed.");
-			}
+		public function set blueChannel(v:uint):void {
+			$blueCh = v & 0xF;
+			$matrix[10] = $blueCh & BitmapDataChannel.RED   ? 1 : 0;
+			$matrix[11] = $blueCh & BitmapDataChannel.GREEN ? 1 : 0;
+			$matrix[12] = $blueCh & BitmapDataChannel.BLUE  ? 1 : 0;
+			$matrix[13] = $blueCh & BitmapDataChannel.ALPHA ? 1 : 0;
 		}
 		
 		/**
@@ -126,19 +105,12 @@ package advancedflex.afgl.images.filters {
 			return $alphaCh;
 		}
 		
-		public function set alphaChannel(v:uint) {
-			if($alive) {
-				$alphaCh = v & 0xF;
-				
-				$matrix[15] = $alphaCh & BitmapDataChannel.RED   ? 1 : 0;
-				$matrix[16] = $alphaCh & BitmapDataChannel.GREEN ? 1 : 0;
-				$matrix[17] = $alphaCh & BitmapDataChannel.BLUE  ? 1 : 0;
-				$matrix[18] = $alphaCh & BitmapDataChannel.ALPHA ? 1 : 0;
-			}else{
-				throw new IllegalOperationError(
-					"This FilterFactory is disposed.");
-			}
-			
+		public function set alphaChannel(v:uint):void {
+			$alphaCh = v & 0xF;
+			$matrix[15] = $alphaCh & BitmapDataChannel.RED   ? 1 : 0;
+			$matrix[16] = $alphaCh & BitmapDataChannel.GREEN ? 1 : 0;
+			$matrix[17] = $alphaCh & BitmapDataChannel.BLUE  ? 1 : 0;
+			$matrix[18] = $alphaCh & BitmapDataChannel.ALPHA ? 1 : 0;
 		}
 		
 		/**
@@ -172,20 +144,15 @@ package advancedflex.afgl.images.filters {
 		 * @return 滤镜。
 		 */
 		public function create():BitmapFilter {
-			if($alive) {
-				return new ColorMatrixFilter($matrix);
-			}
-			throw new IllegalOperationError("This FilterFactory is disposed.");
+			return new ColorMatrixFilter($matrix);
 		}
 		
 		/**
-		 * 释放滤镜工厂占用的大内存。
-		 * 对 BitmapFilterFactory 调用 dispose() 方法时，
-		 * 对此 BitmapFilterFactory 实例的方法或属性的所有后续调用都将失败，并引发异常。
+		 * 释放滤镜工厂占用的大内存，但实际上什么也不做。
+		 * 调用后在调用其他方法时也不会发成错误。
 		 */
 		public function dispose():void {
-			$matrix = null;
-			$used = false;
+			//Do Nothing.
 		}
 		
 		/**
@@ -194,15 +161,12 @@ package advancedflex.afgl.images.filters {
 		 * @return IBitmapFilterFactory 对象。
 		 */
 		public function clone():IBitmapFilterFactory {
-			if($alive) {
-				return new ChannelChangeFilterFactory(
-					$redCh, 
-					$greenCh, 
-					$blueCh, 
-					$alphaCh
-				);
-			}
-			throw new IllegalOperationError("This FilterFactory is disposed.");
+			return new ChannelChangeFilterFactory(
+				$redCh, 
+				$greenCh, 
+				$blueCh, 
+				$alphaCh
+			);
 		}
 		
 	}

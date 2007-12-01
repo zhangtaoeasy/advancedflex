@@ -19,6 +19,7 @@
 package advancedflex.afgl.images.filters {
 	import flash.filters.BitmapFilter;
 	import flash.filters.ColorMatrixFilter;
+	import flash.errors.IllegalOperationError;
 
 	/**
 	 * 彩度滤镜工厂。
@@ -27,19 +28,19 @@ package advancedflex.afgl.images.filters {
 	public class SaturationFilterFactory implements IBitmapFilterFactory {
 		
 		/* Red Identity */
-		private static const $redIdentity 	= [1, 	0, 	  0,	0, 0];
+		private static const $redIdentity:Array	= 	[1, 0, 0, 0, 0];
 		
 		/* Green Identity */
-		private static const $greenIdentity = [0, 	1, 	  0,	0, 0];
+		private static const $greenIdentity:Array = [0, 1, 0, 0, 0];
 		
 		/* Blue Identity */
-		private static const $blueIdentity 	= [0, 	0, 	  1,	0, 0];
+		private static const $blueIdentity:Array = 	[0, 0, 1, 0, 0];
 		
 		/* Alpha Identity */
-		private static const $alphaIdentity = [0, 	0, 	  0,	1, 0];
+		private static const $alphaIdentity:Array = [0, 0, 0, 1, 0];
 		
 		/* grayluma */
-		private static const $grayluma 		= [0.3, 0.59, 0.11, 0, 0];
+		private static const $grayluma:Array = 	[0.3, 0.59, 0.11, 0, 0];
 		
 		/* Saturation Amount */
 		private var $amount:Number;
@@ -115,7 +116,7 @@ package advancedflex.afgl.images.filters {
 		{
 			var result:Array = 
 				(ary1.length >= ary2.length) ? ary1.slice() : ary2.slice();
-			var i = result.length;
+			var i:int = result.length;
 			while (i--) {
 				result[i] = ary1[i] + (ary2[i] - ary1[i]) * t;
 			}
