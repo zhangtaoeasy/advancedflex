@@ -50,7 +50,7 @@ package advancedflex.debugger.aut.framework {
 	 * @author WeiHe
 	 * 
 	 */
-	public class TestCase implements Test {
+	public class TestCase implements advancedflex.debugger.aut.framework.Test {
 		
 		/**
 		 * <p>The output of test.</p>
