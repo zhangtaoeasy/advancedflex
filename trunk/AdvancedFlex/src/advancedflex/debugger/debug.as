@@ -20,5 +20,6 @@ package advancedflex.debugger {
 	 * 
 	 * <p>这个命名空间是用来给调试环境的。</p>
 	 */
-	public namespace debug = "http://code.google.com/p/advancedflex/debugger/debug";
+	public namespace debug = 
+		"http://advancedflex.googlecode.com/debugger/debug";
 }
