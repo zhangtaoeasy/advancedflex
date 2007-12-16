@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
+//  Copyright 2007 Advanced Flex Project http://advancedflex.googlecode.com/. 
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-package advancedflex.afgl.images {
+
+package advancedflex.graphics.images {
+	
 	import flash.display.BitmapData;
 	
 	internal class BitmapDataBag {
