@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+	<allow-access-from domain="http://advancedflex.googlecode.com/" />
+	<allow-access-from domain="http://code.google.com/p/advancedflex/" />
+</cross-domain-policy>
