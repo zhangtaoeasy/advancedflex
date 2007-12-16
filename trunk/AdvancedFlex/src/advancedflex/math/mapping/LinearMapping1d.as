@@ -55,5 +55,11 @@ package advancedflex.math.mapping {
 		public function inRange(value:Number):Boolean {
 			return !isNaN(value);
 		}
+		public function get range():Range {
+			return new Range(-Infinity, Infinity);
+		}
+		public function getValueRange(range:Range):Range {
+			return new Range(-Infinity, Infinity);
+		}
 	}
 }
