@@ -2,18 +2,40 @@ package advancedflex.graphics.drawing {
 	import flash.display.Graphics;
 	import flash.geom.Point;
 	
-	public class AdvancedGraphics implements IDrawing {
+	public class AdvancedGraphics extends AbstractDrawing implements IDrawing {
 		
-		private var $g:Graphics;
+		public function AdvancedGraphics(g:Graphics) {
+			this.g = g;
+		}
 		
-		public function get graphics():Graphics {
-			return $g;
+		public function drawParametricEquation(
+			fx:Function, fy:Function, 
+			min:Number, max:Number, 
+			interval:Number):void 
+		{
+			if(interval <= 0) {
+				throw new ArgumentError("Param:<interval> must > 0.")
+			}
+			moveTo(fx(min), fy(min));
+			if(min == max) {
+				return;
+			}
+			var i:Number;
+			if(min > max) {
+				for(i = min - interval; i > max; i -= interval) {
+					lineTo(fx(i), fy(i));
+				}
+			}else{
+				for(i = min + interval; i < max; i += interval) {
+					lineTo(fx(i), fy(i));
+				}
+			}
 		}
 		
 		private static const $APPR:Number = 1.0 / 8;
 		
-		public function drawBezier(a:Point, b:Point, c:Point, d:Point):void {
-			$g.moveTo(a.x, a.y);
+		public function drawBezier3(a:Point, b:Point, c:Point, d:Point):void {
+			moveTo(a.x, a.y);
 			var pt1:Point = new Point();
 			var pt2:Point = new Point();
 			var pt3:Point = new Point();
@@ -24,7 +46,7 @@ package advancedflex.graphics.drawing {
 
                 pt2.x = 2*pt2.x - (pt1.x+pt3.x) / 2;
                 pt2.y = 2*pt2.y - (pt1.y+pt3.y) / 2;
-                $g.curveTo(pt2.x, pt2.y, pt1.x, pt1.y);
+                curveTo(pt2.x, pt2.y, pt1.x, pt1.y);
             }
 		}
 		
