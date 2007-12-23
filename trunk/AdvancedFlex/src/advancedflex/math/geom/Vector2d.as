@@ -128,19 +128,40 @@ package advancedflex.math.geom {
 		}
 		
 		/**
+		 * 向量的外积，this×v。
+		 * @param v 向量。
+		 * @return this×v。
+		 */
+		public final function cross(v:Vector2d):Number {
+			return x*v.y - y*v.x;
+		}
+		
+		/**
 		 * 向量的模(长度)，|this|。
 		 * @return |this|。
 		 */
-		public final function abs():Number {
+		public final function get length():Number {
 			return Math.sqrt(x*x + y*y);
+		}
+		
+		public final function set length(v:Number):void {
+			if(v==0) {
+				x = y = 0;
+			}
+			var l:Number = length;
+			var dl:Number = v / l;
+			x *= dl;
+			y *= dl;
 		}
 		
 		/**
 		 * 绕原点旋转 rad 弧度。
-		 * <pre>
+		 * <p>
+		 * <listing>
 		 * x' =  sin(rad)*x + cos(rad)*y
 		 * y' = -sin(rad)*x + cos(rad)*y
-		 * </pre>
+		 * </listing>
+		 * </p>
 		 * @param rad 旋转弧度。
 		 * @return 自己。
 		 */
@@ -155,10 +176,11 @@ package advancedflex.math.geom {
 		
 		/**
 		 * 绕原点旋转 rad 弧度，this = v.rotate(red)。
-		 * <pre>
-		 * x' =  sin(rad)*x + cos(rad)*y
+		 * 
+		 * <p>
+		 * x' =  sin(rad)*x + cos(rad)*y<br/>
 		 * y' = -sin(rad)*x + cos(rad)*y
-		 * </pre>
+		 * </p>
 		 * @param rad 旋转弧度。
 		 * @param v 向量。
 		 * @return 自己。
@@ -219,13 +241,47 @@ package advancedflex.math.geom {
 		}
 		
 		/**
-		 * 向量的夹角，<this，v>。
+		 * 向量的夹角，&lt;this，v&gt;。
 		 * @param v 向量。
-		 * @return 向量的夹角，规定 0 ≤ <this，v> ≤ PI。
+		 * @return 向量的夹角，规定 0 ≤ &lt;this，v&gt; ≤ PI。
 		 * 
 		 */
 		public final function angle(v:Vector2d):Number {
 			return Math.abs( Math.atan2(y,x) - Math.atan2(v.y, v.x) ) % Math.PI;
+		}
+		
+		/**
+		 * 向量的混合积，a·(b×c)。
+		 * @param a 向量。
+		 * @param b 向量。
+		 * @param c 向量。
+		 * @return a·(b×c)。
+		 */
+		public static function MixedPlot(a:Vector2d, b:Vector2d, c:Vector2d):Number {
+			/*
+			 * |a b 1|
+			 * |c d 1|
+			 * |e f 1|
+			 * = ad+cf+be-ed-bc-af
+			 * = a(d-f)+b(e-c)+c(f-b)
+			 */
+			return a.x*(b.y-c.y) + a.y*(c.x-b.x) + b.x*(c.y-a.y);
+		}
+		
+		public final function normalize(tol:Number = 1e-12):Vector2d {
+			var m:Number = length;
+			if(m<tol) {
+				m = 1;
+			}
+			x /= m;
+			y /= m;
+			if(Math.abs(x)<tol) {
+				x = 0;
+			}
+			if(Math.abs(y)<tol) {
+				y = 0;
+			}
+			return this;
 		}
 		
 		/**
@@ -292,6 +348,10 @@ package advancedflex.math.geom {
 		 */
 		public function equals(v:Vector2d, error:Number = 1e-12):Boolean {
 			return Math.abs(x-v.x) <= error && Math.abs(y-v.y);
+		}
+		
+		public function toString():String {
+			return "(" + x + "," + y + ")";
 		}
 	}
 }
