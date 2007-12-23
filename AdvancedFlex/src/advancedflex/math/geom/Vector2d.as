@@ -257,7 +257,7 @@ package advancedflex.math.geom {
 		 * @param c 向量。
 		 * @return a·(b×c)。
 		 */
-		public static function MixedPlot(a:Vector2d, b:Vector2d, c:Vector2d):Number {
+		public static function mixedPlot(a:Vector2d, b:Vector2d, c:Vector2d):Number {
 			/*
 			 * |a b 1|
 			 * |c d 1|
@@ -268,11 +268,8 @@ package advancedflex.math.geom {
 			return a.x*(b.y-c.y) + a.y*(c.x-b.x) + b.x*(c.y-a.y);
 		}
 		
-		public final function normalize(tol:Number = 1e-12):Vector2d {
-			var m:Number = length;
-			if(m<tol) {
-				m = 1;
-			}
+		public final function normalize(thickness:Number = 1, tol:Number = 1e-12):Vector2d {
+			var m:Number = length/thickness;
 			x /= m;
 			y /= m;
 			if(Math.abs(x)<tol) {
@@ -350,6 +347,14 @@ package advancedflex.math.geom {
 			return Math.abs(x-v.x) <= error && Math.abs(y-v.y);
 		}
 		
+		/**
+		 * 
+		 * @return 
+		 * 
+		 */
+		public function clone():Vector2d {
+			return new Vector2d(x, y);
+		}
 		public function toString():String {
 			return "(" + x + "," + y + ")";
 		}
