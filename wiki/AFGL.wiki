@@ -11,7 +11,7 @@ It contains many drawing and image processing API.The root package is `advancedf
 = Package Details =
 
  * advancedflex
-  * afgl
+  * graphics
    * images    //It contains many image processing API.
     * filters    //It contains many _Filter Factory_ that can create the BitmapFilter easily.
     * imgfilter    //It contains many image processing API.It likes the normal filters, or the filter extends BitmapFilter, but only can apply to BitmapData.It can do many things that normal filters can't do.
