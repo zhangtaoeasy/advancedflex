@@ -169,11 +169,15 @@ package advancedflex.math.geom {
 		}
 		
 		public function get rect():Rect2d {
-			return new Rect2d(x, y);
+			return new Rect2d(clone() as Vector2d);
 		}
 		
 		public function set rect(v:Rect2d):void {
 			reset(v);
+		}
+		
+		public function get area():Number {
+			return 0;
 		}
 		
 		/**

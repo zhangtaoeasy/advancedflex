@@ -19,6 +19,7 @@
 package advancedflex.math.geom {
 	
 	import advancedflex.utils.CompareUtil;
+	import advancedflex.utils.FloatUtil;
 	
 	/**
 	 * Rect2d 对象是一个扩展了的矩形。它允许长、宽为负数。
@@ -31,15 +32,29 @@ package advancedflex.math.geom {
 	 */
 	public class Rect2d implements IArea2d {
 		
+		protected var _dest:Vector2d;
+		
 		/**
 		 * 矩形左上角的 x 坐标。
 		 */
-		public var x:Number;
+		public final function get x():Number {
+			return _dest.x;
+		}
+		
+		public final function set x(v:Number):void {
+			_dest.x = v;
+		}
 		
 		/**
 		 * 矩形左上角的 y 坐标。
 		 */
-		public var y:Number;
+		public final function get y():Number {
+			return _dest.y;
+		}
+		
+		public final function set y(v:Number):void {
+			_dest.y = v;
+		}
 		
 		/**
 		 * 矩形的宽度。它可以为负数。
@@ -61,14 +76,8 @@ package advancedflex.math.geom {
 		 * @param width 矩形的宽度。它可以为负数。
 		 * @param height 矩形的高度。它可以为负数。
 		 */
-		public function Rect2d(
-			x:Number = 0, 
-			y:Number = 0, 
-			width:Number = 0, 
-			height:Number = 0) 
-		{
-			this.x = x;
-			this.y = y;
+		public function Rect2d(dest:Vector2d = null, width:Number = 0, height:Number = 0) {
+			_dest = dest || new Vector2d();
 			this.width = width;
 			this.height = height;
 		}
@@ -80,6 +89,10 @@ package advancedflex.math.geom {
 		 */
 		public final function get rect():Rect2d {
 			return clone() as Rect2d;
+		}
+		
+		public function get area():Number {
+			return width*height;
 		}
 		
 		/**
@@ -312,15 +325,13 @@ package advancedflex.math.geom {
 		 * 
 		 */
 		public function equals(toCompare:*, tol:Number = 1e-12):Boolean {
-			return 	CompareUtil.eqFloat(x, toCompare.x, tol)
-				&&	CompareUtil.eqFloat(y, toCompare.y, tol)
-				&&	CompareUtil.eqFloat(width, toCompare.width, tol)
-				&&	CompareUtil.eqFloat(height, toCompare.height, tol);
+			return 	_dest.equals(toCompare._dest, tol)
+				&&	FloatUtil.equals(width, toCompare.width, tol)
+				&&	FloatUtil.equals(height, toCompare.height, tol);
 		}
 		
 		public function clone():IArea2d {
-			//TODO
-			return null;
+			return new Rect2d(_dest.clone() as Vector2d, width, height);
 		}
 	}
 }

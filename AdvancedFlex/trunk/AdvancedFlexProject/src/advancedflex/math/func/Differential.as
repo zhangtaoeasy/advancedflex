@@ -20,6 +20,15 @@ package advancedflex.math.func {
 	 * 微分
 	 */
 	public final class Differential {
+		
+		/**
+		 * 微分。
+		 * 
+		 * @param f 被微分的函数
+		 * @param x x。
+		 * @param delta dx的大小。
+		 * @return f(x)的斜率。
+		 */
 		public static function diff(f:Function, x:Number, delta:Number = 1e-8):Number {
 			return (f(x+delta) - f(x)) / delta;
 		}

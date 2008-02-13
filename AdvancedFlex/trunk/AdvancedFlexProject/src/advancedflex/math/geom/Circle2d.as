@@ -10,9 +10,16 @@ package advancedflex.math.geom {
 			this.center = center;
 		}
 		
+		public function reset3point(p1:Vector2d, p2:Vector2d, p3:Vector2d):Circle2d {
+			return null;//TODO
+		}
 		
 		public function get rect():Rect2d {
 			return null;
+		}
+		
+		public function get area():Number {
+			return radius*radius*Math.PI;
 		}
 		
 		public function equals(toCompare:*, tol:Number = 1e-12):Boolean {
