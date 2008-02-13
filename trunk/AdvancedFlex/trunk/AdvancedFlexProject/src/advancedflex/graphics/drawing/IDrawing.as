@@ -1,55 +1,31 @@
 package advancedflex.graphics.drawing {
+	
+	import advancedflex.math.geom.Circle2d;
+	import advancedflex.math.geom.Ellipse2d;
+	import advancedflex.math.geom.Rect2d;
+	import advancedflex.math.geom.Vector2d;
+	
 	import flash.display.Graphics;
-	import flash.display.BitmapData;
-	import flash.geom.Matrix;
 	
 	public interface IDrawing {
+		
 		function get graphics():Graphics;
-		
-		function beginBitmapFill(
-			bitmap:BitmapData, matrix:Matrix = null, 
-			repeat:Boolean = true, smooth:Boolean = false):void;
-			
-		function beginFill(color:uint, alpha:Number = 1.0):void;
-		
-		function beginGradientFill(
-			type:String, colors:Array, alphas:Array, ratios:Array, 
-			matrix:Matrix = null, spreadMethod:String = "pad", 
-			interpolationMethod:String = "rgb", 
-			focalPointRatio:Number = 0):void;
 			
 		function clear():void;
 		
-		function curveTo(
-			controlX:Number, controlY:Number, 
-			anchorX:Number, anchorY:Number):void;
+		function curveTo(control:Vector2d, anchor:Vector2d):void;
 			
-		function drawCircle(x:Number, y:Number, radius:Number):void;
+		function drawCircle(circle:Circle2d):void;
 		
-		function drawEllipse(x:Number, y:Number, 
-			width:Number, height:Number):void;
+		function drawEllipse(ellipse:Ellipse2d):void;
 			
-		function drawRect(x:Number, y:Number, width:Number, height:Number):void;
+		function drawRect(rect:Rect2d):void;
 		
-		function drawRoundRect(x:Number, y:Number, width:Number, height:Number, 
+		function drawRoundRect(rect:Rect2d, 
 			ellipseWidth:Number, ellipseHeight:Number):void;
-			
-		function endFill():void;
 		
-		function lineGradientStyle(
-			type:String, colors:Array, alphas:Array, ratios:Array, 
-			matrix:Matrix = null, spreadMethod:String = "pad", 
-			interpolationMethod:String = "rgb", 
-			focalPointRatio:Number = 0):void;
+		function lineTo(point:Vector2d):void;
 		
-		function lineStyle(
-			thickness:Number, color:uint = 0, alpha:Number = 1.0, 
-			pixelHinting:Boolean = false, scaleMode:String = "normal", 
-			caps:String = null, joints:String = null, 
-			miterLimit:Number = 3):void;
-		
-		function lineTo(x:Number, y:Number):void;
-		
-		function moveTo(x:Number, y:Number):void;
+		function moveTo(point:Vector2d):void;
 	}
 }

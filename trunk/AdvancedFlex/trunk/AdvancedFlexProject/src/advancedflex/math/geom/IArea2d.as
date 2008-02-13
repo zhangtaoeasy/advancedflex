@@ -5,6 +5,8 @@ package advancedflex.math.geom {
 		
 		function equals(toCompare:*, tol:Number = 1e-12):Boolean;
 		
+		function get area():Number;
+		
 		function clone():IArea2d;
 	}
 }
