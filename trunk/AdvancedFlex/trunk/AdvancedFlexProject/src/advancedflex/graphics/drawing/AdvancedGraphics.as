@@ -5,7 +5,7 @@ package advancedflex.graphics.drawing {
 	public class AdvancedGraphics extends AbstractDrawing implements IDrawing {
 		
 		public function AdvancedGraphics(g:Graphics) {
-			this.g = g;
+			super(g);
 		}
 		
 		public function drawParametricEquation(
@@ -16,18 +16,18 @@ package advancedflex.graphics.drawing {
 			if(interval <= 0) {
 				throw new ArgumentError("Param:<interval> must > 0.")
 			}
-			moveTo(fx(min), fy(min));
+			g.moveTo(fx(min), fy(min));
 			if(min == max) {
 				return;
 			}
 			var i:Number;
 			if(min > max) {
 				for(i = min - interval; i > max; i -= interval) {
-					lineTo(fx(i), fy(i));
+					g.lineTo(fx(i), fy(i));
 				}
 			}else{
 				for(i = min + interval; i < max; i += interval) {
-					lineTo(fx(i), fy(i));
+					g.lineTo(fx(i), fy(i));
 				}
 			}
 		}
@@ -35,7 +35,7 @@ package advancedflex.graphics.drawing {
 		private static const $APPR:Number = 1.0 / 8;
 		
 		public function drawBezier3(a:Point, b:Point, c:Point, d:Point):void {
-			moveTo(a.x, a.y);
+			g.moveTo(a.x, a.y);
 			var pt1:Point = new Point();
 			var pt2:Point = new Point();
 			var pt3:Point = new Point();
@@ -46,7 +46,7 @@ package advancedflex.graphics.drawing {
 
                 pt2.x = 2*pt2.x - (pt1.x+pt3.x) / 2;
                 pt2.y = 2*pt2.y - (pt1.y+pt3.y) / 2;
-                curveTo(pt2.x, pt2.y, pt1.x, pt1.y);
+                g.curveTo(pt2.x, pt2.y, pt1.x, pt1.y);
             }
 		}
 		

@@ -5,6 +5,8 @@ package advancedflex.utils {
 		
 		private static const $root:Dictionary = new Dictionary(true);
 		
+		private static const $self:Dictionary = new Dictionary(true);
+		
 		private var $holder:Dictionary;
 		
 		public function FlyWeightManager(clazz:Class) {
@@ -18,7 +20,9 @@ package advancedflex.utils {
 				delete $holder[v];
 				return v;
 			}
+			
 		}
+		
 		public function recovery(v:IFlyWeightObject, ...args):void {
 			v.teardownFlyWeight(args);
 			$holder[v] = null;
