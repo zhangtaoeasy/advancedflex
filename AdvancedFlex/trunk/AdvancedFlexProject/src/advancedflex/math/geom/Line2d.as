@@ -27,7 +27,9 @@ package advancedflex.math.geom {
 			}
 			return this;
 		}
-		
+		public final function get area():Number {
+			return 0;
+		}
 		public function get rect():Rect2d {
 			if(_interceptX == Infinity)
 				return new Rect2d(new Vector2d(-Infinity, _interceptY), Infinity, 0);

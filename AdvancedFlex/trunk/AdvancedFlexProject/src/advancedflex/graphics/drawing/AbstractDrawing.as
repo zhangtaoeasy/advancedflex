@@ -7,9 +7,10 @@ package advancedflex.graphics.drawing {
 	import flash.display.Graphics;
 
 	public class AbstractDrawing implements IDrawing {
+		protected var g:Graphics;
 		
-		function AbstractDrawing(graphics:Graphics) {
-			
+		public function AbstractDrawing(graphics:Graphics) {
+			g = graphics;
 		}
 		
 		public function lineTo(point:Vector2d):void {

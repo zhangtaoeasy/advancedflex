@@ -1,0 +1,33 @@
+<?xml version="1.0" encodeing="utf-8"?>
+<!--
+	The root element must be "context".
+	And also its and its children's xmlns must be 
+	"http://advancedflex.googlecode.com/advancedflex/core/process/xmlcontext".
+-->
+<context
+	xmlns="http://advancedflex.googlecode.com/advancedflex/core/process/xmlcontext">
+
+	<!--
+		This element contains some elements named "target" that define the application's process.
+	-->
+	<targets start="singn-up">
+
+		<!--
+			This element defines the application's process.
+		-->
+		<target id="sign-up" ref="signUp">
+			<forwards>
+				<forward id="sign-up-success" name="sucess" />
+				<forward id="sign-up-failure" name="failure" />
+			</forwards>
+		</target>
+		<target id="sign-up-success">
+			<chain>
+				<process ref="addToDB" />
+				<process ref="clean" />
+				<process rel="render" />
+			</chain>
+		</target>
+		<target id="sign-up-failure" ref="failure" />
+	</targets>
+</context>
