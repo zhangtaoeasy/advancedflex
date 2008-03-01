@@ -25,10 +25,9 @@ package advancedflex.io.format.tests {
 			var result:ByteArray = new ByteArray();
 			Base85Decoder.decodeByteArray(base85, result, Base85CharSet.DECODE_RFC_1924);
 			out.println(ByteArrayUtil.toHex(result));
-			Assert.isTrue(ByteArrayUtil.equals(bytes, result);
+			Assert.isTrue(ByteArrayUtil.equals(bytes, result));
 			result.uncompress();
-			out.println(ByteArrayUtil.toHex(bytes2, result));
-			
+			Assert.isTrue(ByteArrayUtil.toHex(bytes2, result));
 		}
 	}
 }
