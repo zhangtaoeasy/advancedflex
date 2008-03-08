@@ -1,6 +1,6 @@
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
+//  Copyright 2007 Advanced Flex Project http://advancedflex.googlecode.com/. 
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-package advancedflex.io.format {
+
+package advancedflex.io.codec {
 	
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
@@ -27,7 +28,7 @@ package advancedflex.io.format {
 	 * @see Base85CharSet
 	 * @see Base85Encoder
 	 */
-	public class Base85Decoder {
+	public class Base85Decoder implements IBaseXDecoder{
 
 		/**
 		 * 解码为String
@@ -39,7 +40,7 @@ package advancedflex.io.format {
 		 * @see Base85CharSet#RFC_1924
 		 * @see Base85Encoder#encode
 		 */
-		public static function decode(src:String, charSet:Object = null):String {
+		public function decodeString(src:String, charSet:Object = null):String {
 			var bytes:ByteArray = new ByteArray();
 			bytes.writeUTFBytes(src);
 			var mark:int = bytes.length;
@@ -58,7 +59,7 @@ package advancedflex.io.format {
 		 * @see Base85CharSet#RFC_1924
 		 * @see Base85Encoder#encodeByteArray
 		 */
-		public static function decodeByteArray(data:String, output:IDataOutput, decharSet:Object = null):void {
+		public function decodeByteArray(data:String, output:IDataOutput, decharSet:Object = null):void {
 			decharSet = decharSet ? decharSet : Base85CharSet.DECODE_RFC_1924;
 			var dataLength:int = data.length;
 			var endbytes:int = dataLength % 5;

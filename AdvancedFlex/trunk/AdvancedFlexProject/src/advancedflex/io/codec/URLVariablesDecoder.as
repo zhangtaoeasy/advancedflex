@@ -1,4 +1,4 @@
-package advancedflex.io.format {
+package advancedflex.io.codec {
 	import flash.net.URLVariables;
 	
 	public class URLVariablesDecoder {

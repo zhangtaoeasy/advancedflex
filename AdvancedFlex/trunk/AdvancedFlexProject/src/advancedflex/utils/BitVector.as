@@ -4,8 +4,11 @@ package advancedflex.utils {
 	use namespace flash_proxy;
 
 	public class BitVector extends Proxy {
+		
 		protected var _buf:Array;
+		
 		protected var _length:int;
+		
 		public function BitVector(arg:*) {
 			super();
 			if(!arg) {

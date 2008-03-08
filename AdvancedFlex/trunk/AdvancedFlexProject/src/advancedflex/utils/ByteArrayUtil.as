@@ -17,7 +17,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 package advancedflex.utils {
 	import flash.utils.ByteArray;
-	import flash.utils.Endian;
 	import flash.utils.IDataOutput;
 	
 	public class ByteArrayUtil {

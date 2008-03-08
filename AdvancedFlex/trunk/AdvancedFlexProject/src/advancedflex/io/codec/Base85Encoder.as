@@ -1,6 +1,6 @@
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright 2007 Advanced Flex Project http://code.google.com/p/advancedflex/. 
+//  Copyright 2007 Advanced Flex Project http://advancedflex.googlecode.com/. 
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-package advancedflex.io.format {
+
+package advancedflex.io.codec {
 	import flash.utils.ByteArray;
 	import flash.utils.IDataInput;
 	
@@ -26,7 +27,7 @@ package advancedflex.io.format {
 	 * @see Base85CharSet
 	 * @see Base85Decoder
 	 */
-	public class Base85Encoder {
+	public class Base85Encoder implements IBaseXEncoder{
 		/**
 		 * 用String来编码
 		 * 
@@ -36,7 +37,7 @@ package advancedflex.io.format {
 		 * 
 		 * @see Base85CharSet#RFC_1924
 		 */
-		public static function encode(src:String, charSet:Array = null):String {
+		public function encodeString(src:String, charSet:Array = null):String {
 			// Convert string to ByteArray
 			var bytes:ByteArray = new ByteArray();
 			bytes.writeUTFBytes(src);
@@ -52,7 +53,7 @@ package advancedflex.io.format {
 		 * 
 		 * @see Base85CharSet#RFC_1924
 		 */
-		public static function encodeByteArray(data:IDataInput, charSet:Array = null):String {
+		public function encode(data:IDataInput, charSet:Array = null):String {
 			charSet = charSet ? charSet : Base85CharSet.RFC_1924;
 			// Initialise output
 			var output:String = "";						//output
