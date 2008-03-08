@@ -15,7 +15,7 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
-package advancedflex.io.format {
+package advancedflex.io.codec {
 	
 	/**
 	 * Base64的字符集(Character Set)

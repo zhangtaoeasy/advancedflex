@@ -1,4 +1,4 @@
-package advancedflex.io.format {
+package advancedflex.io.codec {
 	import flash.utils.describeType;
 	
 	public class URLVariablesEncoder {

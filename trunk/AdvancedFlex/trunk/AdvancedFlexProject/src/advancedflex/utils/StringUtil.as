@@ -32,7 +32,18 @@ package advancedflex.utils {
 	 * @playerversion Flash 9.0 
 	 */
 	public final class StringUtil extends mx.utils.StringUtil{
-
+		
+		public static function mapping(str:String, map:Object):String {
+			var buf:Array = str.split("");
+			var length:int = buf.length;
+			for(var i:int = 0; i < length; i++) {
+				if(map[buf[i]] !== null) {
+					buf[i] = map[buf[i]];
+				}
+			}
+			return buf.join("");
+		}
+		
 		/**
 		 * 删除左边的空白(空格、\t、\r、\n、\f)。
 		 * @param str 要被删除空白的字符串。
@@ -98,7 +109,7 @@ package advancedflex.utils {
 		 * @return true 已 start:结束(后缀)。; false:不已 start 结束(后缀)。
 		 */
 		public static function endWith(str:String, suffix:String):Boolean {
-			return right(str, start.length) == start;
+			return right(str, suffix.length) == suffix;
 		}
 		
 		/**
@@ -769,9 +780,9 @@ package advancedflex.utils {
 		*	@playerversion Flash 9.0
 		*	@tiptext
 		*/
-		public static function truncate(p_string:String, p_len:uint, p_suffix:String = "..."):String {
+		public static function truncate(p_string:String, p_len:int = -1, p_suffix:String = "..."):String {
 			if (p_string == null) { return ''; }
-			if (p_len == undefined) { p_len = p_string.length; }
+			if (p_len < 0) { p_len = p_string.length; }
 			p_len -= p_suffix.length;
 			var trunc:String = p_string;
 			if (trunc.length > p_len) {

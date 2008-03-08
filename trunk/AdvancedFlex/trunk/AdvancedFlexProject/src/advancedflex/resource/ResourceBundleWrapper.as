@@ -1,7 +1,8 @@
 package advancedflex.resource {
-	import mx.resources.ResourceBundle;
-	import flash.utils.*;
 	import flash.errors.IllegalOperationError;
+	import flash.utils.*;
+	
+	import mx.resources.ResourceBundle;
 
 	use namespace flash_proxy;
 	

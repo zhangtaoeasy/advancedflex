@@ -1,13 +1,14 @@
-package advancedflex.io.format.tests {
+package advancedflex.io.codec.tests {
+	
+	import advancedflex.debugger.aut.framework.Assert;
 	import advancedflex.debugger.aut.framework.TestCase;
 	import advancedflex.debugger.aut.framework.ns.*;
-	import flash.utils.ByteArray;
-	import advancedflex.utils.ByteArrayUtil;
-	import advancedflex.io.format.Base85Encoder;
 	import advancedflex.io.format.Base85CharSet;
 	import advancedflex.io.format.Base85Decoder;
-	import advancedflex.io.format.Base64CharSet;
-	import advancedflex.debugger.aut.framework.Assert;
+	import advancedflex.io.format.Base85Encoder;
+	import advancedflex.utils.ByteArrayUtil;
+	
+	import flash.utils.ByteArray;
 	
 	use namespace test;
 	public class Base85Test extends TestCase {
@@ -27,7 +28,7 @@ package advancedflex.io.format.tests {
 			out.println(ByteArrayUtil.toHex(result));
 			Assert.isTrue(ByteArrayUtil.equals(bytes, result));
 			result.uncompress();
-			Assert.isTrue(ByteArrayUtil.toHex(bytes2, result));
+			Assert.isTrue(ByteArrayUtil.equals(bytes2, result));
 		}
 	}
 }

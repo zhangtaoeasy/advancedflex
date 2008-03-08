@@ -1,9 +1,8 @@
 package advancedflex.js {
-	import flash.events.IEventDispatcher;
-	import mx.core.IMXMLObject;
+	
 	import flash.events.EventDispatcher;
-	import flash.net.navigateToURL;
-	import flash.net.URLRequest;
+	
+	import mx.core.IMXMLObject;
 
 	[DefaultProperty("source")]
 	public class JavaScript extends EventDispatcher implements IMXMLObject {
